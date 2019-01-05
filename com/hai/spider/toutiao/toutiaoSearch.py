@@ -130,12 +130,13 @@ def main(offset):
     html = get_page_index(offset, toutiaoSearchConfig.searchKey)
     # 解析索引页内容，获取详细页面URL
     for url in parse_page_index(html):
-        # 将详细页面内容赋值给html
-        html = get_page_detail(url)
-        # 如果详细页面内容不为空，则解析详细内容
-        if html:
-            result = parse_page_Detail(html, url)
-            # print(result)
+        if url:
+            # 将详细页面内容赋值给html
+            html = get_page_detail(url)
+            # 如果详细页面内容不为空，则解析详细内容
+            if html:
+                result = parse_page_Detail(html, url)
+                # print(result)
 
 
 if __name__ == '__main__':
