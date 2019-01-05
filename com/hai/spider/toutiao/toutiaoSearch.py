@@ -2,14 +2,20 @@ import json
 import os
 import random
 import re
+import sys
 from hashlib import md5
 from multiprocessing import Pool
 from urllib.parse import urlencode
 
 import requests
-import toutiaoSearchConfig
+
+# 添加路径
+sys.path.append(os.getcwd() + "../..")
+
 from bs4 import BeautifulSoup
 from requests.exceptions import RequestException
+
+from config import Config
 
 
 # 获取索引页内容
@@ -112,7 +118,7 @@ def down_images(url):
 
 # 保存图片
 def sava_images(content):
-    file_pref = "/var/data/toutiao/" + toutiaoSearchConfig.searchKey
+    file_pref = "/var/data/toutiao/" + Config.touTiaoSearchKey
     file_path = "{0}/{1}.{2}".format(file_pref, md5(content).hexdigest(), 'jpg')
     if not os.path.exists(file_path):
         # 如果不存在，则创建目录
@@ -127,7 +133,7 @@ def sava_images(content):
 def main(offset):
     # 获取索引页内容
     # 传入第一个变量为offset值，第二个为关键字，网页通过滑动，offset值会发生改变
-    html = get_page_index(offset, toutiaoSearchConfig.searchKey)
+    html = get_page_index(offset, Config.touTiaoSearchKey)
     # 解析索引页内容，获取详细页面URL
     for url in parse_page_index(html):
         if url:

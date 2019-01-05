@@ -1,11 +1,17 @@
 #!-*-coding:utf-8-*-
 __author__ = 'zhl'
 
-import json
+import os
+import sys
 
 import bs4
 import requests
 from bs4 import BeautifulSoup
+
+sys.path.append(os.getcwd() + "../..")
+
+from util import DateUtil
+from util import MongoUtil
 
 
 class Top(object):
@@ -31,11 +37,12 @@ class Top(object):
                         tmp["url"] = "http://s.weibo.com" + child.a["href"]
                     tmp["title"] = child.a.text.strip()
                     tmp["count"] = child.span.string
+                    tmp["createTime"] = DateUtil.nowSplit()
                     # 加入list
                     resultList.append(tmp)
 
-        # 转为json，进行返回
-        return json.dumps(resultList)
+        # 插入mongo库
+        MongoUtil.saveMongo(resultList)
 
 
 if __name__ == '__main__':
@@ -44,4 +51,3 @@ if __name__ == '__main__':
     realtimehot = Top()
     # 进行查询
     result = realtimehot.get_top("http://s.weibo.com/top/summary?cate=realtimehot")
-    print(name + result)
