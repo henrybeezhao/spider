@@ -38,16 +38,22 @@ class Top(object):
                     tmp["title"] = child.a.text.strip()
                     tmp["count"] = child.span.string
                     tmp["createTime"] = DateUtil.nowSplit()
+                    tmp["source"] = "weibo"
+                    tmp["category"] = "hot_search"
                     # 加入list
                     resultList.append(tmp)
 
         # 插入mongo库
-        MongoUtil.saveMongo(resultList)
+        MongoUtil.saveMongoForHotSearch(resultList)
 
 
-if __name__ == '__main__':
-    name = '实时热搜榜\n'
+def main():
     # 创建对象
     realtimehot = Top()
     # 进行查询
-    result = realtimehot.get_top("http://s.weibo.com/top/summary?cate=realtimehot")
+    realtimehot.get_top("http://s.weibo.com/top/summary?cate=realtimehot")
+    print("weibo hot search start at time:%s" % DateUtil.nowSplit)
+
+
+if __name__ == '__main__':
+    main()

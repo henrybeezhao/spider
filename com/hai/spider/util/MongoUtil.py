@@ -15,7 +15,7 @@ client = pymongo.MongoClient(Config.mongoUri)
 
 
 # 存储数据,content格式为：list[dict]
-def saveMongo(content, db="spider", collection="weibo_hot_search"):
+def saveMongoForHotSearch(content, db="spider", collection="hot_search"):
     # 获取db
     db = client[db]
     # 获取collection
@@ -35,4 +35,4 @@ if __name__ == "__main__":
     tmp["name"] = "long"
     saveData.append(tmp)
 
-    saveMongo(saveData)
+    saveMongoForHotSearch(saveData)
