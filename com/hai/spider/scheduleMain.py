@@ -12,6 +12,7 @@ sys.path.append(os.getcwd())
 from weibo import weiboHotSearch
 from baidu import baiduHotSearch
 from toutiao import toutiaoHotSearch
+from yidian import yidianHotSearch
 from config import Config
 
 
@@ -20,6 +21,7 @@ def job():
     weiboHotSearch.main()
     baiduHotSearch.main()
     toutiaoHotSearch.main()
+    yidianHotSearch.main()
 
 
 if __name__ == "__main__":

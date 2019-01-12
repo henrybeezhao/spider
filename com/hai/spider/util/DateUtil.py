@@ -13,5 +13,9 @@ def todayNoSplit():
     return datetime.datetime.now().strftime("%Y%m%d")
 
 
+def getNowTimeMillisecond():
+    return int(datetime.datetime.utcnow().timestamp() * 1000)
+
+
 if __name__ == "__main__":
-    print(nowSplit())
+    print(getNowTimeMillisecond())
