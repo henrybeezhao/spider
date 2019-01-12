@@ -131,18 +131,23 @@ def sava_images(content):
 
 
 def main(offset):
-    # 获取索引页内容
-    # 传入第一个变量为offset值，第二个为关键字，网页通过滑动，offset值会发生改变
-    html = get_page_index(offset, Config.touTiaoSearchKey)
-    # 解析索引页内容，获取详细页面URL
-    for url in parse_page_index(html):
-        if url:
-            # 将详细页面内容赋值给html
-            html = get_page_detail(url)
-            # 如果详细页面内容不为空，则解析详细内容
-            if html:
-                result = parse_page_Detail(html, url)
-                # print(result)
+    try:
+
+        # 获取索引页内容
+        # 传入第一个变量为offset值，第二个为关键字，网页通过滑动，offset值会发生改变
+        html = get_page_index(offset, Config.touTiaoSearchKey)
+        # 解析索引页内容，获取详细页面URL
+        for url in parse_page_index(html):
+            if url:
+                # 将详细页面内容赋值给html
+                html = get_page_detail(url)
+                # 如果详细页面内容不为空，则解析详细内容
+                if html:
+                    result = parse_page_Detail(html, url)
+                    # print(result)
+
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

@@ -50,17 +50,20 @@ class Top(object):
 
 
 def main():
-    # 创建对象
-    realtimehot = Top()
-    # 实时热点
-    realtimehot.get_top("http://top.baidu.com/buzz?b=1&fr=topbuzz_b11", "hot_realtime")
-    # 今日热点
-    realtimehot.get_top("http://top.baidu.com/buzz?b=341&c=513&fr=topbuzz_b341_c513", "hot_today")
-    # 民生热点
-    realtimehot.get_top("http://top.baidu.com/buzz?b=342&c=513&fr=topbuzz_b341_c513", "hot_livelihood")
-    # 娱乐热点
-    realtimehot.get_top("http://top.baidu.com/buzz?b=344&c=513&fr=topbuzz_b342_c513", "hot_entertainment")
-    print("baidu hot search start at time:%s" % DateUtil.nowSplit)
+    try:
+        # 创建对象
+        realtimehot = Top()
+        # 实时热点
+        realtimehot.get_top("http://top.baidu.com/buzz?b=1&fr=topbuzz_b11", "hot_realtime")
+        # 今日热点
+        realtimehot.get_top("http://top.baidu.com/buzz?b=341&c=513&fr=topbuzz_b341_c513", "hot_today")
+        # 民生热点
+        realtimehot.get_top("http://top.baidu.com/buzz?b=342&c=513&fr=topbuzz_b341_c513", "hot_livelihood")
+        # 娱乐热点
+        realtimehot.get_top("http://top.baidu.com/buzz?b=344&c=513&fr=topbuzz_b342_c513", "hot_entertainment")
+        print("baidu hot search start at time:%s" % DateUtil.nowSplit())
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':

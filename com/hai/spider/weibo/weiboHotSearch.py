@@ -48,11 +48,15 @@ class Top(object):
 
 
 def main():
-    # 创建对象
-    realtimehot = Top()
-    # 进行查询
-    realtimehot.get_top("http://s.weibo.com/top/summary?cate=realtimehot")
-    print("weibo hot search start at time:%s" % DateUtil.nowSplit)
+    try:
+
+        # 创建对象
+        realtimehot = Top()
+        # 进行查询
+        realtimehot.get_top("http://s.weibo.com/top/summary?cate=realtimehot")
+        print("weibo hot search start at time:%s" % DateUtil.nowSplit())
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':
