@@ -26,7 +26,7 @@ class Top(object):
             # 定义一个返回值
             resultList = []
             # keywords结果为json，进行json处理
-            count = len(keywords)
+            count = 100
             for item in keywords:
                 tmp = {}
                 tmp["url"] = ""

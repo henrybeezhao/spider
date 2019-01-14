@@ -14,6 +14,7 @@ from baidu import baiduHotSearch
 from toutiao import toutiaoHotSearch
 from yidian import yidianHotSearch
 from config import Config
+from toutiao import xiguaHotSearch
 
 
 def job():
@@ -22,6 +23,7 @@ def job():
     baiduHotSearch.main()
     toutiaoHotSearch.main()
     yidianHotSearch.main()
+    xiguaHotSearch.main()
 
 
 if __name__ == "__main__":
